@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <!--
+      Automatically find the aspect
+    -->
+    <aop:aspectj-autoproxy/>
+    <bean id="audience3" class="com.springinaction.springidol.Audience3"/>
+<!--
+    <bean id="audience2" class="com.springinaction.springidol.Audience2"/>
+-->
+
+    <bean id="audience" class="com.springinaction.springidol.Audience"/>
+    <bean id="sonnet29" class="com.springinaction.springidol.Sonnet29"/>
+
+    <bean id="duke" class="com.springinaction.springidol.PoeticJuggler">
+        <constructor-arg value="15"/>
+        <constructor-arg ref="sonnet29"/>
+    </bean>
+    <bean id="juggler" class="com.springinaction.springidol.Juggler">
+        <constructor-arg value="5"/>
+    </bean>
+
+    <bean id="magician" class="com.springinaction.springidol.Magician"/>
+    <bean id="volunteer" class="com.springinaction.springidol.Volunteer"/>
+    <bean id="contestant" class="com.springinaction.springidol.GraciousContestant"/>
+
+
+    <!--<aop:config>
+        <aop:aspect ref="audience">
+             <aop:pointcut id="performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
+             <aop:before method="takeSeats" pointcut-ref="performance"/>
+             <aop:before method="turnOffCellPhones" pointcut-ref="performance"/>
+             <aop:after-returning method="applaud" pointcut-ref="performance"/>
+             <aop:after-throwing method="demandRefund" pointcut-ref="performance"/>
+            <aop:pointcut id="performance2"
+                          expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
+            <aop:around method="watchPerformance" pointcut-ref="performance2"/>
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--<aop:config>
+        <aop:aspect ref="magician">
+            <aop:pointcut id="thinking"
+                          expression="execution(* com.springinaction.springidol.Thinker.thinkOfSomething(String)) and args(thoughts))"/>
+            <aop:before pointcut-ref="thinking" method="interceptThoughts" arg-names="thoughts"/>
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--
+        Introduce new functionality with aspects.
+    -->
+
+
+
+
+    <!--<aop:config>
+        <aop:aspect ref="contestant">
+            <aop:declare-parents types-matching="com.springinaction.springidol.Performer+"
+                                 implement-interface="com.springinaction.springidol.Contestant"
+                                 default-impl="com.springinaction.springidol.GraciousContestant"/>
+            <aop:pointcut id="performance3" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
+            <aop:after-returning method="receiveAward" pointcut-ref="performance3"/>
+            <aop:before method="rejectAward" pointcut-ref="performance3"/>
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--<aop:config>
+        <aop:aspect ref="audience2" >
+               <aop:pointcut id="performance" expression="execution(* com.springinaction.springidol.Performer.perform(..))"/>
+        </aop:aspect>
+    </aop:config>-->
+
+
+</beans>

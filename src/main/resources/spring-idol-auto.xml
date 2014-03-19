@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/tool"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/spring-context.xsd http://www.springframework.org/schema/tool http://www.springframework.org/schema/tool/spring-tool.xsd">
+
+
+
+    <bean id="stage" class="com.springinaction.springidol.Stage" factory-method="getInstance"/>
+
+    <!--<bean id="poeticDuke" class="com.springinaction.springidol.PoeticJuggler" init-method="initMethod" destroy-method="destroyMethod">
+        <constructor-arg value="15"/>
+        <constructor-arg ref="sonnet29"/>
+    </bean>-->
+    <!-- AutoWire byName-->
+    <!--<bean id="instrument" class="com.springinaction.springidol.Saxophone"/>
+    <bean id="kenny2" class="com.springinaction.springidol.Instrumentalist" autowire="byName">
+        <property name="song" value="Jingle Bell"/>
+    </bean>-->
+
+    <!-- AutoWire byType-->
+    <!--<bean id="saxophone" class="com.springinaction.springidol.Saxophone" autowire-candidate="false"/>
+    <bean id="piano" class="com.springinaction.springidol.Piano"/>
+    <bean id="kenny2" class="com.springinaction.springidol.Instrumentalist" autowire="byType">
+        <property name="song" value="Jingle Bell"/>
+    </bean>-->
+
+    <!-- AutoWire constructor-->
+    <bean id="sonnet29" class="com.springinaction.springidol.Sonnet29"/>
+    <bean id="duke" class="com.springinaction.springidol.PoeticJuggler" autowire="constructor"/>
+
+
+</beans>
